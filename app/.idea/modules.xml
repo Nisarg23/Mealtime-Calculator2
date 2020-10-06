@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1093590209/Mealtime_Calculator.iml" filepath="$PROJECT_DIR$/.idea/modules/-1093590209/Mealtime_Calculator.iml" group="Mealtime_Calculator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="Mealtime Calculator/app" />
+    </modules>
+  </component>
+</project>
