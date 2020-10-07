@@ -1,24 +1,41 @@
 package com.nphq.mealtimecalculator;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ListView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.ui.AppBarConfiguration;
+
+import com.google.android.material.navigation.NavigationView;
+import com.nphq.mealtimecalculator.ui.gallery.GalleryFragment;
+import com.nphq.mealtimecalculator.ui.home.HomeFragment;
+import com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment;
 
 
-// Food Tracker Activity
-public class MainActivity extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Hashtable;
+
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener {
+    public DrawerLayout drawer;
+
+    public ListView mDrawerList;
+    public static HashMap<String, Integer> drawable_chest = new HashMap<String, Integer>();
+    public static Hashtable<String, Boolean> fragment_selected = new Hashtable<String, Boolean>();
+    public static HashMap<String, Integer> drawable_arena = new HashMap<String, Integer>();
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -29,18 +46,109 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        drawer = findViewById(R.id.drawer_layout);
+        //mDrawerList = findViewById(R.id.drawer_listview);
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        // Passing each menu ID as a set of Ids because each
+//        // menu should be considered as top level destinations.
+//        mAppBarConfiguration = new AppBarConfiguration.Builder(
+//                R.id.nav_my_decks, R.id.nav_meta_decks, R.id.nav_player_info)
+//                .setDrawerLayout(drawer)
+//                .build();
+//        NavController navController = Navigation.findNavController(this, R.id.content_main);
+//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+//        NavigationUI.setupWithNavController(navigationView, navController);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,drawer,toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"gallery").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"slideshow").commitNow();
+
+
+        Fragment f1 = getSupportFragmentManager().findFragmentByTag("home");
+        Fragment f2 = getSupportFragmentManager().findFragmentByTag("gallery");
+        Fragment f3 = getSupportFragmentManager().findFragmentByTag("slideshow");
+
+
+        getSupportFragmentManager().beginTransaction().hide(f2).commitNow();
+        getSupportFragmentManager().beginTransaction().hide(f3).commitNow();
+
+
+        fragment_selected.put("home",true);
+        fragment_selected.put("gallery",false);
+        fragment_selected.put("slideshow",false);
+
+
+
+
+
+
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void displaySelectedScreen(int id){
+        String tag = "";
+        String select= "";
+
+        switch (id){
+            case R.id.nav_food:
+                tag = "slideshow";
+                select = "slideshow";
+                break;
+            case R.id.nav_sleep:
+                tag = "gallery";
+                select = "gallery";
+                break;
+            case R.id.nav_reminder:
+                tag = "home";
+                select = "home";
+                break;
+
+        }
+        FragmentManager manager = getSupportFragmentManager();
+        if (fragment_selected.get("home").equals(true)){
+            fragment_selected.replace("home",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("home")).commitNow();
+        }
+        else if (fragment_selected.get("gallery").equals(true)){
+            fragment_selected.replace("gallery",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("gallery")).commitNow();
+        }
+        else if (fragment_selected.get("slideshow").equals(true)){
+            fragment_selected.replace("slideshow",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("slideshow")).commitNow();
+        }
+
+
+
+        if (!tag.equals("")){
+            getSupportFragmentManager().beginTransaction().show(manager.findFragmentByTag(tag)).commitNow();
+        }
+        fragment_selected.replace(tag,true);
+
+        drawer.closeDrawer(GravityCompat.START);
+
+
+    }
+
+
+
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public boolean onNavigationItemSelected(MenuItem item){
+        int id = item.getItemId();
+        displaySelectedScreen(id);
+        return true;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,9 +158,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+//                || super.onSupportNavigateUp();
+//    }
+    public void onBackPressed() {
+
+
     }
+
+
+
+
+
+
+
+
 }
