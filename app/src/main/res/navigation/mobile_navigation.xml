@@ -22,4 +22,9 @@
         android:name="com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment"
         android:label="Exercise Tracker"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_reminder"
+        android:name="com.nphq.mealtimecalculator.ui.ReminderFragment"
+        android:label="Reminder"
+        tools:layout="@layout/fragment_slideshow" />
 </navigation>

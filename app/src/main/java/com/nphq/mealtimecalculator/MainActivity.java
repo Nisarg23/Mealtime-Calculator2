@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.google.android.material.navigation.NavigationView;
+import com.nphq.mealtimecalculator.ui.ReminderFragment;
 import com.nphq.mealtimecalculator.ui.gallery.GalleryFragment;
 import com.nphq.mealtimecalculator.ui.home.HomeFragment;
 import com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment;
@@ -68,20 +69,24 @@ public class MainActivity extends AppCompatActivity implements
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"food").commitNow();
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"sleep").commitNow();
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"exercise").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
 
 
         Fragment f1 = getSupportFragmentManager().findFragmentByTag("food");
         Fragment f2 = getSupportFragmentManager().findFragmentByTag("sleep");
         Fragment f3 = getSupportFragmentManager().findFragmentByTag("exercise");
+        Fragment f4 = getSupportFragmentManager().findFragmentByTag("reminder");
 
 
         getSupportFragmentManager().beginTransaction().hide(f2).commitNow();
         getSupportFragmentManager().beginTransaction().hide(f3).commitNow();
+        getSupportFragmentManager().beginTransaction().hide(f4).commitNow();
 
 
         fragment_selected.put("food",true);
         fragment_selected.put("sleep",false);
         fragment_selected.put("exercise",false);
+        fragment_selected.put("reminder",false);
 
 
 
@@ -109,6 +114,10 @@ public class MainActivity extends AppCompatActivity implements
                 tag = "food";
                 select = "food";
                 break;
+            case R.id.nav_reminder:
+                tag = "reminder";
+                select = "reminder";
+                break;
 
         }
         FragmentManager manager = getSupportFragmentManager();
@@ -123,6 +132,10 @@ public class MainActivity extends AppCompatActivity implements
         else if (fragment_selected.get("exercise").equals(true)){
             fragment_selected.replace("exercise",false);
             getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("exercise")).commitNow();
+        }
+        else if (fragment_selected.get("reminder").equals(true)){
+            fragment_selected.replace("reminder",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("reminder")).commitNow();
         }
 
 
