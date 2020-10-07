@@ -65,23 +65,23 @@ public class MainActivity extends AppCompatActivity implements
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"gallery").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"slideshow").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"food").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"sleep").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"exercise").commitNow();
 
 
-        Fragment f1 = getSupportFragmentManager().findFragmentByTag("home");
-        Fragment f2 = getSupportFragmentManager().findFragmentByTag("gallery");
-        Fragment f3 = getSupportFragmentManager().findFragmentByTag("slideshow");
+        Fragment f1 = getSupportFragmentManager().findFragmentByTag("food");
+        Fragment f2 = getSupportFragmentManager().findFragmentByTag("sleep");
+        Fragment f3 = getSupportFragmentManager().findFragmentByTag("exercise");
 
 
         getSupportFragmentManager().beginTransaction().hide(f2).commitNow();
         getSupportFragmentManager().beginTransaction().hide(f3).commitNow();
 
 
-        fragment_selected.put("home",true);
-        fragment_selected.put("gallery",false);
-        fragment_selected.put("slideshow",false);
+        fragment_selected.put("food",true);
+        fragment_selected.put("sleep",false);
+        fragment_selected.put("exercise",false);
 
 
 
@@ -97,32 +97,32 @@ public class MainActivity extends AppCompatActivity implements
         String select= "";
 
         switch (id){
-            case R.id.nav_food:
-                tag = "slideshow";
-                select = "slideshow";
+            case R.id.nav_exercise:
+                tag = "exercise";
+                select = "exercise";
                 break;
             case R.id.nav_sleep:
-                tag = "gallery";
-                select = "gallery";
+                tag = "sleep";
+                select = "sleep";
                 break;
-            case R.id.nav_reminder:
-                tag = "home";
-                select = "home";
+            case R.id.nav_food:
+                tag = "food";
+                select = "food";
                 break;
 
         }
         FragmentManager manager = getSupportFragmentManager();
-        if (fragment_selected.get("home").equals(true)){
-            fragment_selected.replace("home",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("home")).commitNow();
+        if (fragment_selected.get("food").equals(true)){
+            fragment_selected.replace("food",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("food")).commitNow();
         }
-        else if (fragment_selected.get("gallery").equals(true)){
-            fragment_selected.replace("gallery",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("gallery")).commitNow();
+        else if (fragment_selected.get("sleep").equals(true)){
+            fragment_selected.replace("sleep",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("sleep")).commitNow();
         }
-        else if (fragment_selected.get("slideshow").equals(true)){
-            fragment_selected.replace("slideshow",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("slideshow")).commitNow();
+        else if (fragment_selected.get("exercise").equals(true)){
+            fragment_selected.replace("exercise",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("exercise")).commitNow();
         }
 
 

@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/nav_food"
         android:name="com.nphq.mealtimecalculator.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Food Tracker"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_sleep"
         android:name="com.nphq.mealtimecalculator.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="Sleep Tracker"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_reminder"
+        android:id="@+id/nav_exercise"
         android:name="com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="Exercise Tracker"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
