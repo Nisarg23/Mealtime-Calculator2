@@ -66,15 +66,15 @@ public class MainActivity extends AppCompatActivity implements
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"food").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"sleep").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"exercise").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"stats").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"contact").commitNow();
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
 
 
-        Fragment f1 = getSupportFragmentManager().findFragmentByTag("food");
-        Fragment f2 = getSupportFragmentManager().findFragmentByTag("sleep");
-        Fragment f3 = getSupportFragmentManager().findFragmentByTag("exercise");
+        Fragment f1 = getSupportFragmentManager().findFragmentByTag("home");
+        Fragment f2 = getSupportFragmentManager().findFragmentByTag("stats");
+        Fragment f3 = getSupportFragmentManager().findFragmentByTag("contact");
         Fragment f4 = getSupportFragmentManager().findFragmentByTag("reminder");
 
 
@@ -83,9 +83,9 @@ public class MainActivity extends AppCompatActivity implements
         getSupportFragmentManager().beginTransaction().hide(f4).commitNow();
 
 
-        fragment_selected.put("food",true);
-        fragment_selected.put("sleep",false);
-        fragment_selected.put("exercise",false);
+        fragment_selected.put("home",true);
+        fragment_selected.put("stats",false);
+        fragment_selected.put("contact",false);
         fragment_selected.put("reminder",false);
 
 
@@ -102,17 +102,17 @@ public class MainActivity extends AppCompatActivity implements
         String select= "";
 
         switch (id){
-            case R.id.nav_exercise:
-                tag = "exercise";
-                select = "exercise";
+            case R.id.nav_contact:
+                tag = "contact";
+                select = "contact";
                 break;
-            case R.id.nav_sleep:
-                tag = "sleep";
-                select = "sleep";
+            case R.id.nav_stats:
+                tag = "stats";
+                select = "stats";
                 break;
-            case R.id.nav_food:
-                tag = "food";
-                select = "food";
+            case R.id.nav_home:
+                tag = "home";
+                select = "home";
                 break;
             case R.id.nav_reminder:
                 tag = "reminder";
@@ -121,17 +121,17 @@ public class MainActivity extends AppCompatActivity implements
 
         }
         FragmentManager manager = getSupportFragmentManager();
-        if (fragment_selected.get("food").equals(true)){
-            fragment_selected.replace("food",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("food")).commitNow();
+        if (fragment_selected.get("home").equals(true)){
+            fragment_selected.replace("home",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("home")).commitNow();
         }
-        else if (fragment_selected.get("sleep").equals(true)){
-            fragment_selected.replace("sleep",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("sleep")).commitNow();
+        else if (fragment_selected.get("stats").equals(true)){
+            fragment_selected.replace("stats",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("stats")).commitNow();
         }
-        else if (fragment_selected.get("exercise").equals(true)){
-            fragment_selected.replace("exercise",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("exercise")).commitNow();
+        else if (fragment_selected.get("contact").equals(true)){
+            fragment_selected.replace("contact",false);
+            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("contact")).commitNow();
         }
         else if (fragment_selected.get("reminder").equals(true)){
             fragment_selected.replace("reminder",false);
