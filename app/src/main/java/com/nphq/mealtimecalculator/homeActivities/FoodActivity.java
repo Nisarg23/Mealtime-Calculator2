@@ -1,8 +1,10 @@
-package com.nphq.mealtimecalculator.HomeActivities;
+package com.nphq.mealtimecalculator.homeActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.nphq.mealtimecalculator.R;
 
 public class FoodActivity extends AppCompatActivity {
 
