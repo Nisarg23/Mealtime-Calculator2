@@ -28,14 +28,6 @@ public class AlarmCardView {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
         c.setLayoutParams(layoutParams);
 
-//        ConstraintSet constraintSet = new ConstraintSet();
-//        ConstraintLayout constraintLayout = ReminderFragment.constraintLayout;
-//        constraintLayout.addView(c);
-//        constraintSet.clone(constraintLayout);
-//        constraintSet.connect(c.getId(),constraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
-//        constraintSet.connect(c.getId(),constraintSet.RIGHT,ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
-//        constraintSet.connect(c.getId(),constraintSet.TOP,ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
-//        constraintSet.applyTo(constraintLayout);
 
     }
 
