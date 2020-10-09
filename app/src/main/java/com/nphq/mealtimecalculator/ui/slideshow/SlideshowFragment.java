@@ -1,10 +1,13 @@
 package com.nphq.mealtimecalculator.ui.slideshow;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +24,7 @@ public class SlideshowFragment extends Fragment {
     private EditText mEditTextMessage;
     private EditText mEditTextTo;
     private EditText mEditTextSubject;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,7 +46,9 @@ public class SlideshowFragment extends Fragment {
             }
         });
 
-
+        hideKeyboard(getActivity(), mEditTextMessage);
+        hideKeyboard(getActivity(),mEditTextTo);
+        hideKeyboard(getActivity(),mEditTextSubject);
 
         return root;
     }
@@ -61,5 +67,18 @@ public class SlideshowFragment extends Fragment {
 
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent, "Choose an email client"));
+
+    }
+
+    public static void hideKeyboard(final Context context, final View v){
+        v.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
+
+
     }
 }

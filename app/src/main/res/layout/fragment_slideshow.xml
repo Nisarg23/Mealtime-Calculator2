@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:descendantFocusability="beforeDescendants"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ui.slideshow.SlideshowFragment">
@@ -21,11 +25,11 @@
         android:id="@+id/edit_text_to"
         android:layout_width="match_parent"
         android:layout_height="130dp"
+        android:layout_gravity="left|top"
+        android:ems="10"
         android:inputType="textEmailAddress"
         android:minLines="2"
         android:scrollHorizontally="false"
-        android:layout_gravity="left|top"
-        android:ems="10"
         android:text="nisarg23patel@gmail.com,sofi8020@gmail.com,jkcandy2001@gmail.com,Cameron.rr.griffiths@outlook.com"
         android:textSize="25sp" />
 

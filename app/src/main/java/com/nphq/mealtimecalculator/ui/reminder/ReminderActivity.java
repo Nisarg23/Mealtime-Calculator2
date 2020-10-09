@@ -43,12 +43,12 @@ public class ReminderActivity extends AppCompatActivity {
                 if (alarmCardViews.size() == 0) {
                     constraintSet.connect(a.getCardView().getId(), constraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
                     constraintSet.connect(a.getCardView().getId(), constraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 20);
+                    constraintSet.connect(a.getCardView().getId(), constraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 40);
                 }
                 else{
                     constraintSet.connect(a.getCardView().getId(), constraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
                     constraintSet.connect(a.getCardView().getId(), constraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.TOP, alarmCardViews.get(alarmCardViews.size()-1).getCardView().getId(), ConstraintSet.BOTTOM, 20);
+                    constraintSet.connect(a.getCardView().getId(), constraintSet.TOP, alarmCardViews.get(alarmCardViews.size()-1).getCardView().getId(), ConstraintSet.BOTTOM, 40);
                 }
                 constraintSet.applyTo(constraintLayout);
                 alarmCardViews.add(a);
