@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".homeActivities.FoodActivity"></activity>
+        <activity android:name=".homeActivities.GlucoseLevelsActivity"></activity>
+        <activity android:name=".homeActivities.SleepActivity" />
+        <activity android:name=".homeActivities.ExerciseActivity" />
+        <activity android:name=".homeActivities.FoodActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

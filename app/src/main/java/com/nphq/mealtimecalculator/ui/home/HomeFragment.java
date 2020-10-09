@@ -15,7 +15,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.nphq.mealtimecalculator.R;
+import com.nphq.mealtimecalculator.homeActivities.ExerciseActivity;
 import com.nphq.mealtimecalculator.homeActivities.FoodActivity;
+import com.nphq.mealtimecalculator.homeActivities.GlucoseLevelsActivity;
+import com.nphq.mealtimecalculator.homeActivities.SleepActivity;
 
 import org.w3c.dom.Text;
 
@@ -28,17 +31,43 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         CardView view1 = root.findViewById(R.id.view1);
         view1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), FoodActivity.class));
+
+         }
+        });
+        CardView view2 = root.findViewById(R.id.view2);
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ExerciseActivity.class));
             }
         });
 
+        CardView view3 = root.findViewById(R.id.view3);
+        view3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), GlucoseLevelsActivity.class));
 
+                                     }
+                                 }
+        );
+
+        CardView view4 = root.findViewById(R.id.view4);
+        view4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SleepActivity.class));
+
+                                     }
+                                 }
+        );
 
 
 
