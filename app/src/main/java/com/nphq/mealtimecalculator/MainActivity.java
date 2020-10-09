@@ -1,8 +1,5 @@
 package com.nphq.mealtimecalculator;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.google.android.material.navigation.NavigationView;
-import com.nphq.mealtimecalculator.ui.ReminderFragment;
+import com.nphq.mealtimecalculator.ui.reminder.ReminderFragment;
 import com.nphq.mealtimecalculator.ui.gallery.GalleryFragment;
 import com.nphq.mealtimecalculator.ui.home.HomeFragment;
 import com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment;
