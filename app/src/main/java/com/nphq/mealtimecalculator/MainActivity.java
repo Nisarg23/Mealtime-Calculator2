@@ -18,9 +18,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import com.google.android.material.navigation.NavigationView;
 import com.nphq.mealtimecalculator.ui.reminder.ReminderFragment;
-import com.nphq.mealtimecalculator.ui.gallery.GalleryFragment;
+import com.nphq.mealtimecalculator.ui.stats.StatsFragment;
 import com.nphq.mealtimecalculator.ui.home.HomeFragment;
-import com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment;
+import com.nphq.mealtimecalculator.ui.contact.ContactFragment;
 
 
 import java.util.HashMap;
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity implements
         navigationView.setNavigationItemSelectedListener(this);
 
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"stats").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"contact").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new StatsFragment(),"stats").commitNow();
+        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new ContactFragment(),"contact").commitNow();
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
 
         Fragment f2 = getSupportFragmentManager().findFragmentByTag("stats");

@@ -1,4 +1,4 @@
-package com.nphq.mealtimecalculator.ui.slideshow;
+package com.nphq.mealtimecalculator.ui.contact;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,7 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nphq.mealtimecalculator.R;
 
-public class SlideshowFragment extends Fragment {
+public class ContactFragment extends Fragment {
 
     private SlideshowViewModel slideshowViewModel;
     private EditText mEditTextMessage;
@@ -30,7 +29,7 @@ public class SlideshowFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         slideshowViewModel =
                 ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        View root = inflater.inflate(R.layout.fragment_contact, container, false);
 
 
         mEditTextMessage = root.findViewById(R.id.edit_text_message);
