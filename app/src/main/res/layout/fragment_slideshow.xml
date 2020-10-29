@@ -10,7 +10,7 @@
     android:descendantFocusability="beforeDescendants"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ui.contact.ContactFragment">
+    tools:context=".ui.slideshow.SlideshowFragment">
 
     <TextView
         android:layout_width="match_parent"
