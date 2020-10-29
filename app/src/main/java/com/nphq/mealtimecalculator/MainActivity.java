@@ -28,11 +28,12 @@ import java.util.Hashtable;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
-    public DrawerLayout drawer;
+
 
     public ListView mDrawerList;
     public static HashMap<String, Integer> drawable_chest = new HashMap<String, Integer>();
     public static Hashtable<String, Boolean> fragment_selected = new Hashtable<String, Boolean>();
+    public DrawerLayout drawer;
     public static HashMap<String, Integer> drawable_arena = new HashMap<String, Integer>();
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -44,18 +45,9 @@ public class MainActivity extends AppCompatActivity implements
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // custom code for fragment navigation
         drawer = findViewById(R.id.drawer_layout);
-        //mDrawerList = findViewById(R.id.drawer_listview);
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        mAppBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.nav_my_decks, R.id.nav_meta_decks, R.id.nav_player_info)
-//                .setDrawerLayout(drawer)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.content_main);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,drawer,toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -68,16 +60,18 @@ public class MainActivity extends AppCompatActivity implements
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"contact").commitNow();
         getSupportFragmentManager().beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
 
-
-        Fragment f1 = getSupportFragmentManager().findFragmentByTag("home");
         Fragment f2 = getSupportFragmentManager().findFragmentByTag("stats");
         Fragment f3 = getSupportFragmentManager().findFragmentByTag("contact");
         Fragment f4 = getSupportFragmentManager().findFragmentByTag("reminder");
 
 
+
+
         getSupportFragmentManager().beginTransaction().hide(f2).commitNow();
         getSupportFragmentManager().beginTransaction().hide(f3).commitNow();
         getSupportFragmentManager().beginTransaction().hide(f4).commitNow();
+
+        getSupportActionBar().setTitle("Home Page");
 
 
         fragment_selected.put("home",true);
@@ -92,28 +86,28 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-
+    // switches to fragment seclected
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void displaySelectedScreen(int id){
         String tag = "";
-        String select= "";
+
 
         switch (id){
             case R.id.nav_contact:
                 tag = "contact";
-                select = "contact";
+                getSupportActionBar().setTitle("Contact Page");
                 break;
             case R.id.nav_stats:
                 tag = "stats";
-                select = "stats";
+                getSupportActionBar().setTitle("Stats Page");
                 break;
             case R.id.nav_home:
                 tag = "home";
-                select = "home";
+                getSupportActionBar().setTitle("Home Page");
                 break;
             case R.id.nav_reminder:
                 tag = "reminder";
-                select = "reminder";
+                getSupportActionBar().setTitle("Reminder Page");
                 break;
 
         }
