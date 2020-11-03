@@ -5,26 +5,26 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.nphq.mealtimecalculator.ui.home.HomeFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_home" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_home"-->
+<!--        android:name="com.nphq.mealtimecalculator.ui.home.HomeFragment"-->
+<!--        android:label="Home"-->
+<!--        tools:layout="@layout/fragment_home" />-->
 
-    <fragment
-        android:id="@+id/nav_stats"
-        android:name="com.nphq.mealtimecalculator.ui.gallery.GalleryFragment"
-        android:label="Stats"
-        tools:layout="@layout/fragment_sleep" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_stats"-->
+<!--        android:name="com.nphq.mealtimecalculator.ui.gallery.GalleryFragment"-->
+<!--        android:label="Stats"-->
+<!--        tools:layout="@layout/fragment_sleep" />-->
 
-    <fragment
-        android:id="@+id/nav_contact"
-        android:name="com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment"
-        android:label="Contact"
-        tools:layout="@layout/fragment_contact" />
-    <fragment
-        android:id="@+id/nav_reminder"
-        android:name="com.nphq.mealtimecalculator.ui.reminder.ReminderFragment"
-        android:label="Reminder"
-        tools:layout="@layout/fragment_contact" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_contact"-->
+<!--        android:name="com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment"-->
+<!--        android:label="Contact"-->
+<!--        tools:layout="@layout/fragment_contact" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/nav_reminder"-->
+<!--        android:name="com.nphq.mealtimecalculator.ui.reminder.ReminderFragment"-->
+<!--        android:label="Reminder"-->
+<!--        tools:layout="@layout/fragment_contact" />-->
 </navigation>

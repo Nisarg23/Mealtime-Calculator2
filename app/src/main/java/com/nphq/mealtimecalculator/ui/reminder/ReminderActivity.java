@@ -2,23 +2,31 @@ package com.nphq.mealtimecalculator.ui.reminder;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.nphq.mealtimecalculator.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ReminderActivity extends AppCompatActivity {
-    Context context = this;
-    ArrayList<AlarmCardView> alarmCardViews = ReminderFragment.alarmCardViews;
+
+
+    TextView editTextName;
+    TextView editTextHour;
+    TextView editTextMinute;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,31 +36,127 @@ public class ReminderActivity extends AppCompatActivity {
         Button save = findViewById(R.id.save_button);
         Button cancel = findViewById(R.id.cancel_button);
 
+        final TextView am_pm = findViewById(R.id.am_pm);
+
+        am_pm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (am_pm.getText().toString() == "a.m."){
+                   am_pm.setText("p.m.");
+                }
+                else{
+                    am_pm.setText("a.m.");
+                }
+            }
+        });
+
+        Button monday = findViewById(R.id.monday);
+        Button tuesday = findViewById(R.id.tuesday);
+        Button wednesday = findViewById(R.id.wednesday);
+        Button thursday = findViewById(R.id.thursday);
+        Button friday = findViewById(R.id.friday);
+        Button saturday = findViewById(R.id.saturday);
+        Button sunday = findViewById(R.id.sunday);
+
+        final Button[] days = {monday,tuesday,wednesday,thursday,friday,saturday,sunday};
+        final boolean[] days_selcted = {false,false,false,false,false,false,false};
+
+        for (int i = 0; i<7; i++) {
+            final int finalI = i;
+            days[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (days_selcted[finalI] == false) {
+                        days_selcted[finalI] = true;
+                        days[finalI].setBackgroundResource(R.drawable.tiel_round_button);
+                    }
+                    else if (days_selcted[finalI] == true){
+                        days_selcted[finalI] = false;
+                        days[finalI].setBackgroundResource(R.drawable.white_round_button);
+                    }
+                    else{
+                        Toast.makeText(getBaseContext(),"Error",Toast.LENGTH_LONG);
+                    }
+                }
+            });
+        }
+
+
+        editTextName = findViewById(R.id.editTextName);
+        editTextHour = findViewById(R.id.editTextHour);
+        editTextMinute = findViewById(R.id.editTextMinute);
+
+
 
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ConstraintSet constraintSet = new ConstraintSet();
-                ConstraintLayout constraintLayout = ReminderFragment.constraintLayout;
+                if (editTextHour.getText().toString().isEmpty() || editTextMinute.getText().toString().isEmpty()){
+                    Snackbar.make(findViewById(R.id.reminder_layout),"Please select a time",Snackbar.LENGTH_LONG).show();
 
-                CardView c = new CardView(context);
-                AlarmCardView a = new AlarmCardView(context,c);
-                constraintLayout.addView(c);
-                constraintSet.clone(constraintLayout);
-                if (alarmCardViews.size() == 0) {
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 40);
                 }
+//                else if(Integer.parseInt(editTextHour.getText().toString()) > )
                 else{
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
-                    constraintSet.connect(a.getCardView().getId(), constraintSet.TOP, alarmCardViews.get(alarmCardViews.size()-1).getCardView().getId(), ConstraintSet.BOTTOM, 40);
+                    ReminderFragment.reminderAdapater.notifyDataSetChanged();
+                    ReminderFragment.name.add(editTextName.getText().toString());
+                    ReminderFragment.am_or_pm.add(am_pm.getText().toString());
+                    ReminderFragment.hour.add(editTextHour.getText().toString());
+                    ReminderFragment.minute.add(editTextMinute.getText().toString());
+                    ReminderFragment.days.add(new ArrayList<Boolean>());
+                    for (int i=0; i<7; i++){
+                        ReminderFragment.days.get(ReminderFragment.days.size()-1).add(days_selcted[i]);
+                    }
+
+                    ReminderFragment.alarm_activated.add(true);
+                    Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM);
+                    intent.putExtra(AlarmClock.EXTRA_HOUR,Integer.parseInt(editTextHour.getText().toString()));
+                    intent.putExtra(AlarmClock.EXTRA_MINUTES,Integer.parseInt(editTextMinute.getText().toString()));
+
+                    Boolean isPm = true;
+
+                    if (am_pm.getText().toString().equals("a.m.")){
+                        isPm = false;
+                    }
+                    intent.putExtra(AlarmClock.EXTRA_IS_PM,isPm);
+
+                    ArrayList<Integer> alarmDays = new ArrayList<>();
+                    if (days_selcted[0] == true){
+                        alarmDays.add(Calendar.MONDAY);
+                    }
+                    if (days_selcted[1] == true){
+                        alarmDays.add(Calendar.TUESDAY);
+                    }
+                    if (days_selcted[2] == true){
+                        alarmDays.add(Calendar.WEDNESDAY);
+                    }
+                    if (days_selcted[3] == true){
+                        alarmDays.add(Calendar.THURSDAY);
+                    }
+                    if (days_selcted[4] == true){
+                        alarmDays.add(Calendar.FRIDAY);
+                    }
+                    if (days_selcted[5] == true){
+                        alarmDays.add(Calendar.SATURDAY);
+                    }
+                    if (days_selcted[6] == true){
+                        alarmDays.add(Calendar.SUNDAY);
+                    }
+                    intent.putExtra(AlarmClock.EXTRA_DAYS,alarmDays);
+                    intent.putExtra(AlarmClock.EXTRA_MESSAGE,"Mealtime App: "+editTextName.getText().toString());
+
+
+
+
+                    CheckBox vibrate = findViewById(R.id.vibrate);
+
+                    intent.putExtra(AlarmClock.EXTRA_VIBRATE,vibrate.isChecked());
+
+
+                    sendBroadcast(intent);
+                    finish();
                 }
-                constraintSet.applyTo(constraintLayout);
-                alarmCardViews.add(a);
-                finish();
+
             }
         });
 
@@ -62,21 +166,7 @@ public class ReminderActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
-    public void createCardView(CardView c){
-//        c.setId(View.generateViewId());
-//
-//
-//        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, context.getResources().getDisplayMetrics());
-//        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 450, context.getResources().getDisplayMetrics());
-//        float radius = (float) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 13, context.getResources().getDisplayMetrics());
-//
-//        c.setRadius(radius);
-//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
-//        c.setLayoutParams(layoutParams);
-//
-//        alarmCardViews.add(c);
-    }
+
 }

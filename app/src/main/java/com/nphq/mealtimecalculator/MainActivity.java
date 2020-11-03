@@ -1,5 +1,9 @@
 package com.nphq.mealtimecalculator;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,9 +18,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.google.android.material.navigation.NavigationView;
+import com.nphq.mealtimecalculator.ui.notification.NotificationFragment;
 import com.nphq.mealtimecalculator.ui.reminder.ReminderFragment;
 import com.nphq.mealtimecalculator.ui.gallery.GalleryFragment;
 import com.nphq.mealtimecalculator.ui.home.HomeFragment;
@@ -31,13 +37,14 @@ public class MainActivity extends AppCompatActivity implements
 
 
     public ListView mDrawerList;
-    public static HashMap<String, Integer> drawable_chest = new HashMap<String, Integer>();
     public static Hashtable<String, Boolean> fragment_selected = new Hashtable<String, Boolean>();
     public DrawerLayout drawer;
     public static HashMap<String, Integer> drawable_arena = new HashMap<String, Integer>();
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static FragmentManager fragmentManager;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,21 +62,26 @@ public class MainActivity extends AppCompatActivity implements
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new GalleryFragment(),"stats").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new SlideshowFragment(),"contact").commitNow();
-        getSupportFragmentManager().beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
+        fragmentManager = getSupportFragmentManager();
 
-        Fragment f2 = getSupportFragmentManager().findFragmentByTag("stats");
-        Fragment f3 = getSupportFragmentManager().findFragmentByTag("contact");
-        Fragment f4 = getSupportFragmentManager().findFragmentByTag("reminder");
+        fragmentManager.beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new GalleryFragment(),"stats").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new SlideshowFragment(),"contact").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new NotificationFragment(),"notification").commitNow();
+
+        Fragment f2 = fragmentManager.findFragmentByTag("stats");
+        Fragment f3 = fragmentManager.findFragmentByTag("contact");
+        Fragment f4 = fragmentManager.findFragmentByTag("reminder");
+        Fragment f5 = fragmentManager.findFragmentByTag("notification");
 
 
 
 
-        getSupportFragmentManager().beginTransaction().hide(f2).commitNow();
-        getSupportFragmentManager().beginTransaction().hide(f3).commitNow();
-        getSupportFragmentManager().beginTransaction().hide(f4).commitNow();
+        fragmentManager.beginTransaction().hide(f2).commitNow();
+        fragmentManager.beginTransaction().hide(f3).commitNow();
+        fragmentManager.beginTransaction().hide(f4).commitNow();
+        fragmentManager.beginTransaction().hide(f5).commitNow();
 
         getSupportActionBar().setTitle("Home Page");
 
@@ -78,10 +90,14 @@ public class MainActivity extends AppCompatActivity implements
         fragment_selected.put("stats",false);
         fragment_selected.put("contact",false);
         fragment_selected.put("reminder",false);
+        fragment_selected.put("notification",false);
 
+        Boolean open_noticiation = getIntent().getBooleanExtra("goToNotification",false);
+        // System.out.print("Go To Notification "+ open_noticiation);
 
-
-
+        if (open_noticiation){
+            displaySelectedScreen(R.id.nav_to_notification);
+        }
 
 
     }
@@ -106,33 +122,37 @@ public class MainActivity extends AppCompatActivity implements
                 getSupportActionBar().setTitle("Home Page");
                 break;
             case R.id.nav_reminder:
-                tag = "reminder";
-                getSupportActionBar().setTitle("Reminder Page");
+                tag = "notification";
+                getSupportActionBar().setTitle("Notification Page");
                 break;
 
         }
-        FragmentManager manager = getSupportFragmentManager();
+
         if (fragment_selected.get("home").equals(true)){
             fragment_selected.replace("home",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("home")).commitNow();
+            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("home")).commitNow();
         }
         else if (fragment_selected.get("stats").equals(true)){
             fragment_selected.replace("stats",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("stats")).commitNow();
+            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("stats")).commitNow();
         }
         else if (fragment_selected.get("contact").equals(true)){
             fragment_selected.replace("contact",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("contact")).commitNow();
+            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("contact")).commitNow();
         }
         else if (fragment_selected.get("reminder").equals(true)){
             fragment_selected.replace("reminder",false);
-            getSupportFragmentManager().beginTransaction().hide(manager.findFragmentByTag("reminder")).commitNow();
+            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("reminder")).commitNow();
+        }
+        else if (fragment_selected.get("notification").equals(true)){
+            fragment_selected.replace("notification",false);
+            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("notification")).commitNow();
         }
 
 
 
         if (!tag.equals("")){
-            getSupportFragmentManager().beginTransaction().show(manager.findFragmentByTag(tag)).commitNow();
+            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag(tag)).commitNow();
         }
         fragment_selected.replace(tag,true);
 
@@ -140,6 +160,8 @@ public class MainActivity extends AppCompatActivity implements
 
 
     }
+
+
 
 
 
@@ -169,6 +191,21 @@ public class MainActivity extends AppCompatActivity implements
 //    }
     public void onBackPressed() {
 
+
+    }
+
+    public void onPause(){
+        super.onPause();
+//        Intent intent = new Intent(this,BackgroundProcess.class);
+//        intent.setAction("BackgroundProcess");
+//
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+//
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,0,10,pendingIntent);
+//
+//        finish();
 
     }
 

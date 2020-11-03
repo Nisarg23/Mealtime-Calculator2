@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/notification_W"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="W"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_Tu"
+        app:layout_constraintStart_toEndOf="@+id/notification_Tu"
+        app:layout_constraintTop_toTopOf="@+id/notification_Tu" />
+
+    <TextView
+        android:id="@+id/notification_M"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:text="M"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_time"
+        app:layout_constraintStart_toEndOf="@+id/notification_AM_or_PM"
+        app:layout_constraintTop_toTopOf="@+id/notification_time" />
+
+    <TextView
+        android:id="@+id/notification_Tu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="T"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_M"
+        app:layout_constraintStart_toEndOf="@+id/notification_M"
+        app:layout_constraintTop_toTopOf="@+id/notification_M" />
+
+    <TextView
+        android:id="@+id/notification_Th"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="T"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_W"
+        app:layout_constraintStart_toEndOf="@+id/notification_W"
+        app:layout_constraintTop_toTopOf="@+id/notification_W" />
+
+    <TextView
+        android:id="@+id/notification_F"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="F"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_Th"
+        app:layout_constraintStart_toEndOf="@+id/notification_Th"
+        app:layout_constraintTop_toTopOf="@+id/notification_Th" />
+
+    <TextView
+        android:id="@+id/notification_Sa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="S"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_F"
+        app:layout_constraintStart_toEndOf="@+id/notification_F"
+        app:layout_constraintTop_toTopOf="@+id/notification_F" />
+
+    <TextView
+        android:id="@+id/notification_Su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="S"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_Sa"
+        app:layout_constraintStart_toEndOf="@+id/notification_Sa"
+        app:layout_constraintTop_toTopOf="@+id/notification_Sa" />
+
+    <TextView
+        android:id="@+id/notification_AM_or_PM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="a.m."
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/notification_time"
+        app:layout_constraintStart_toEndOf="@+id/notification_time"
+        app:layout_constraintTop_toTopOf="@+id/notification_time">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/notification_time"
+        android:layout_width="86dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:text="9:20"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notification_name" />
+
+    <Switch
+        android:id="@+id/notification_on_or_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="78dp"
+        android:checked="true"
+        android:enabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/notification_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/notification_time"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

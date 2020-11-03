@@ -7,21 +7,10 @@
     android:id="@+id/reminder_layout"
     tools:context=".ui.reminder.ReminderActivity">
 
-    <CheckBox
-        android:id="@+id/vibrate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="175dp"
-        android:text="Vibrate"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thursday" />
+
 
     <Button
-        android:id="@+id/saturday"
+        android:id="@+id/notification_saturday"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -29,11 +18,11 @@
         android:background="@drawable/white_round_button"
         android:text="S"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/friday"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMinute" />
+        app:layout_constraintStart_toEndOf="@+id/notification_friday"
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextMinute" />
 
     <Button
-        android:id="@+id/sunday"
+        android:id="@+id/notification_sunday"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -41,11 +30,11 @@
         android:background="@drawable/white_round_button"
         android:text="S"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/saturday"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMinute" />
+        app:layout_constraintStart_toEndOf="@+id/notification_saturday"
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextMinute" />
 
     <Button
-        android:id="@+id/friday"
+        android:id="@+id/notification_friday"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -53,22 +42,22 @@
         android:background="@drawable/white_round_button"
         android:text="F"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/thursday"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMinute" />
+        app:layout_constraintStart_toEndOf="@+id/notification_thursday"
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextMinute" />
 
     <Button
-        android:id="@+id/thursday"
+        android:id="@+id/notification_thursday"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:background="@drawable/white_round_button"
         android:text="T"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/wednesday"
-        app:layout_constraintTop_toTopOf="@+id/wednesday" />
+        app:layout_constraintStart_toEndOf="@+id/notification_wednesday"
+        app:layout_constraintTop_toTopOf="@+id/notification_wednesday" />
 
     <Button
-        android:id="@+id/wednesday"
+        android:id="@+id/notification_wednesday"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -76,11 +65,11 @@
         android:background="@drawable/white_round_button"
         android:text="W"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/tuesday"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHour" />
+        app:layout_constraintStart_toEndOf="@+id/notification_tuesday"
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextHour" />
 
     <Button
-        android:id="@+id/tuesday"
+        android:id="@+id/notification_tuesday"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -88,26 +77,26 @@
         android:background="@drawable/white_round_button"
         android:text="T"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/monday"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHour" />
+        app:layout_constraintStart_toEndOf="@+id/notification_monday"
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextHour" />
 
     <EditText
-        android:id="@+id/editTextMinute"
+        android:id="@+id/notification_editTextMinute"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="200dp"
         android:ems="10"
         android:gravity="center"
         android:hint="00"
         android:inputType="time"
         android:textSize="100sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toEndOf="@+id/editTextHour"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toEndOf="@+id/notification_editTextHour"
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextName" />
 
     <Button
-        android:id="@+id/cancel_button"
+        android:id="@+id/notification_cancel_button"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginEnd="50dp"
@@ -117,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/notification_save_button"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginStart="50dp"
@@ -127,10 +116,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextHour"
+        android:id="@+id/notification_editTextHour"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="200dp"
         android:ems="10"
         android:gravity="center"
         android:hint="0"
@@ -139,7 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextName" />
 
     <TextView
         android:id="@+id/textView3"
@@ -147,38 +136,38 @@
         android:layout_height="wrap_content"
         android:text=":"
         android:textSize="70sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextHour"
-        app:layout_constraintEnd_toStartOf="@+id/editTextMinute"
-        app:layout_constraintStart_toEndOf="@+id/editTextHour"
-        app:layout_constraintTop_toTopOf="@+id/editTextHour" />
+        app:layout_constraintBottom_toBottomOf="@+id/notification_editTextHour"
+        app:layout_constraintEnd_toStartOf="@+id/notification_editTextMinute"
+        app:layout_constraintStart_toEndOf="@+id/notification_editTextHour"
+        app:layout_constraintTop_toTopOf="@+id/notification_editTextHour" />
 
     <TextView
-        android:id="@+id/am_pm"
+        android:id="@+id/notification_am_pm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:text="a.m."
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextMinute"
-        app:layout_constraintStart_toEndOf="@+id/editTextMinute"
-        app:layout_constraintTop_toTopOf="@+id/editTextMinute" />
+        app:layout_constraintBottom_toBottomOf="@+id/notification_editTextMinute"
+        app:layout_constraintStart_toEndOf="@+id/notification_editTextMinute"
+        app:layout_constraintTop_toTopOf="@+id/notification_editTextMinute" />
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/notification_editTextName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_marginTop="60dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Morning Alarm"
-        android:inputType="textPersonName"
+        android:hint="Insulin Notification"
+        android:inputType="textMultiLine"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/monday"
+        android:id="@+id/notification_monday"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -187,6 +176,6 @@
         android:text="M"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHour" />
+        app:layout_constraintTop_toBottomOf="@+id/notification_editTextHour" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
