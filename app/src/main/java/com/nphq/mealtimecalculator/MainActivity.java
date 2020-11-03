@@ -1,9 +1,5 @@
 package com.nphq.mealtimecalculator;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,15 +14,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.google.android.material.navigation.NavigationView;
 import com.nphq.mealtimecalculator.ui.notification.NotificationFragment;
 import com.nphq.mealtimecalculator.ui.reminder.ReminderFragment;
-import com.nphq.mealtimecalculator.ui.gallery.GalleryFragment;
+import com.nphq.mealtimecalculator.ui.sleep.SleepFragment;
 import com.nphq.mealtimecalculator.ui.home.HomeFragment;
-import com.nphq.mealtimecalculator.ui.slideshow.SlideshowFragment;
+import com.nphq.mealtimecalculator.ui.contact.ContactFragment;
 
 
 import java.util.HashMap;
@@ -65,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements
         fragmentManager = getSupportFragmentManager();
 
         fragmentManager.beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
-        fragmentManager.beginTransaction().add(R.id.content_main,new GalleryFragment(),"stats").commitNow();
-        fragmentManager.beginTransaction().add(R.id.content_main,new SlideshowFragment(),"contact").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new SleepFragment(),"stats").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new ContactFragment(),"contact").commitNow();
         fragmentManager.beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
         fragmentManager.beginTransaction().add(R.id.content_main,new NotificationFragment(),"notification").commitNow();
 
