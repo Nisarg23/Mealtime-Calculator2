@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements
 //                || super.onSupportNavigateUp();
 //    }
     public void onBackPressed() {
-
+        super.onBackPressed();
 
     }
 
