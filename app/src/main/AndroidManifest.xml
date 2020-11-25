@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nphq.mealtimecalculator">
 
-
-
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,12 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.reminder.ReminderActivity"></activity>
-        <activity android:name=".ui.notification.NotificationActivity"></activity>
+        <activity android:name=".homeActivities.API_call"></activity>
+        <activity android:name=".ui.reminder.ReminderActivity" />
+        <activity android:name=".ui.notification.NotificationActivity" />
         <activity android:name=".homeActivities.GlucoseLevelsActivity" />
         <activity android:name=".homeActivities.SleepActivity" />
         <activity android:name=".homeActivities.ExerciseActivity" />
         <activity android:name=".homeActivities.FoodActivity" />
+        <activity android:name=".homeActivities.NutritionList" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -30,13 +32,13 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".BackgroundProcess"
+        <receiver
+            android:name=".BackgroundProcess"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="BackgroundProcess"></action>
+                <action android:name="BackgroundProcess" />
             </intent-filter>
-
         </receiver>
     </application>
 

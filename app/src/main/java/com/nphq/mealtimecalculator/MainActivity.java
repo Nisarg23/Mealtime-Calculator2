@@ -24,6 +24,17 @@ import com.nphq.mealtimecalculator.ui.home.HomeFragment;
 import com.nphq.mealtimecalculator.ui.contact.ContactFragment;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.parser.ParseException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 
@@ -93,6 +104,9 @@ public class MainActivity extends AppCompatActivity implements
         if (open_noticiation){
             displaySelectedScreen(R.id.nav_to_notification);
         }
+
+
+
 
 
     }

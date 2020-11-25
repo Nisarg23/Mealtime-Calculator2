@@ -8,7 +8,7 @@
     tools:context=".homeActivities.FoodActivity">
 
     <Button
-        android:id="@+id/addSnack3"
+        android:id="@+id/addEveningSnack"
         android:layout_width="161dp"
         android:layout_height="100dp"
         android:shadowColor="@android:color/holo_blue_light"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.78" />
 
     <Button
-        android:id="@+id/addSnack2"
+        android:id="@+id/addMorningSnack"
         android:layout_width="161dp"
         android:layout_height="100dp"
         android:shadowColor="@android:color/holo_blue_light"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.9" />
 
     <Button
-        android:id="@+id/addSnack"
+        android:id="@+id/addAfternoonSnack"
         android:layout_width="161dp"
         android:layout_height="100dp"
         android:shadowColor="@android:color/holo_blue_light"
@@ -109,30 +109,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.78" />
 
-    <Button
-        android:id="@+id/date"
-        android:layout_width="463dp"
-        android:layout_height="94dp"
-        android:text="Date appears here"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
-
-    <ProgressBar
-        android:id="@+id/calorieProgressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="374dp"
-        android:layout_height="322dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
-
     <TextView
         android:id="@+id/dailyCalorieCount"
         android:layout_width="382dp"
@@ -143,10 +119,8 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/addMeal"
@@ -163,5 +137,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.671" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="DATE"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
