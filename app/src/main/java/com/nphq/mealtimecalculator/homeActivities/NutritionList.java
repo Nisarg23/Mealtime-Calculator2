@@ -1,6 +1,7 @@
 package com.nphq.mealtimecalculator.homeActivities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -29,15 +30,16 @@ public class NutritionList extends AppCompatActivity {
     ArrayList<String> nutrition_amount = new ArrayList<String>();
     ArrayList<String> nutrition_unit = new ArrayList<String>();
 
-    String food = API_call.food;
+    String food;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nutrition_list);
 
+        Intent intent = getIntent();
+        food = intent.getExtras().getString("food","null");
 
-
-
+        System.out.println("food "+food);
 
         new Thread(new Runnable() {
             @Override
@@ -49,7 +51,6 @@ public class NutritionList extends AppCompatActivity {
 
 
                 try {
-                    System.out.println("food +" + food);
                     urlForGetRequest = new URL("https://api.nal.usda.gov/fdc/v1/foods/list?api_key=kwAPxa4YJSYCvhOz6OZdJbOgZX1lse2FtpldfgG1&query="+food);
                     String readLine = null;
                     HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
@@ -92,7 +93,7 @@ public class NutritionList extends AppCompatActivity {
                         nutrition_name.add(nutrients.get("name").toString());
                         nutrition_amount.add(nutrients.get("amount").toString());
                         nutrition_unit.add(nutrients.get("unitName").toString());
-                        System.out.println(nutrients.get("name").toString()+"  "+nutrients.get("amount").toString());
+
 
 
                     }

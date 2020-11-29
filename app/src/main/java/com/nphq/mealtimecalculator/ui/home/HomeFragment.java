@@ -1,10 +1,13 @@
 package com.nphq.mealtimecalculator.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,9 +18,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.nphq.mealtimecalculator.R;
+import com.nphq.mealtimecalculator.homeActivities.API_call;
 import com.nphq.mealtimecalculator.homeActivities.ExerciseActivity;
 import com.nphq.mealtimecalculator.homeActivities.FoodActivity;
 import com.nphq.mealtimecalculator.homeActivities.GlucoseLevelsActivity;
+import com.nphq.mealtimecalculator.homeActivities.NutritionList;
 import com.nphq.mealtimecalculator.homeActivities.SleepActivity;
 
 import org.w3c.dom.Text;
@@ -25,6 +30,9 @@ import org.w3c.dom.Text;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    public static String food="NULL";
+
+    public static EditText foodEdit;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -33,42 +41,39 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        CardView view1 = root.findViewById(R.id.view1);
-        view1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), FoodActivity.class));
+        Button[] buttons = new Button[6];
 
-         }
-        });
-        CardView view2 = root.findViewById(R.id.view2);
-        view2.setOnClickListener(new View.OnClickListener() {
+        buttons[0] = root.findViewById(R.id.addBreakfast);
+        buttons[1] = root.findViewById(R.id.addLunch);
+        buttons[2] = root.findViewById(R.id.addDinner);
+        buttons[3]  = root.findViewById(R.id.addMorningSnack);
+        buttons[4] = root.findViewById(R.id.addAfternoonSnack);
+        buttons[5] = root.findViewById(R.id.addEveningSnack);
+
+        for (int i=0; i<6;i++){
+            buttons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+        }
+
+
+        foodEdit = root.findViewById(R.id.foodName);
+
+        Button search = root.findViewById(R.id.searchFood);
+
+
+
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ExerciseActivity.class));
+            public void onClick(View view) {
+                food = foodEdit.getEditableText().toString();
+                startActivity(new Intent(getActivity(), NutritionList.class).putExtra("food",food));
+                foodEdit.setText("");
             }
         });
-
-        CardView view3 = root.findViewById(R.id.view3);
-        view3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), GlucoseLevelsActivity.class));
-
-                                     }
-                                 }
-        );
-
-        CardView view4 = root.findViewById(R.id.view4);
-        view4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SleepActivity.class));
-
-                                     }
-                                 }
-        );
-
 
 
 

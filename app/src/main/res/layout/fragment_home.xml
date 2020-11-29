@@ -7,136 +7,167 @@
     android:background="#FFFFFF"
     tools:context=".ui.home.HomeFragment">
 
+    <Button
+        android:id="@+id/addEveningSnack"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:text="evening snack"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addAfternoonSnack"
+        app:layout_constraintStart_toEndOf="@+id/addAfternoonSnack"
+        app:layout_constraintTop_toTopOf="@+id/addAfternoonSnack" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/view1"
-        android:layout_width="450dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="40dp"
-        app:cardCornerRadius="13dp"
+    <Button
+        android:id="@+id/addLunch"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="9dp"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:text="lunch"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addBreakfast"
+        app:layout_constraintStart_toEndOf="@+id/addBreakfast"
+        app:layout_constraintTop_toTopOf="@+id/addBreakfast" />
+
+    <Button
+        android:id="@+id/addMorningSnack"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:text="morning snack"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addBreakfast" />
+
+    <Button
+        android:id="@+id/addAfternoonSnack"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:text="afternoon snack"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addMorningSnack"
+        app:layout_constraintStart_toEndOf="@+id/addMorningSnack"
+        app:layout_constraintTop_toTopOf="@+id/addMorningSnack" />
+
+    <Button
+        android:id="@+id/addDinner"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="7dp"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:text="dinner"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addLunch"
+        app:layout_constraintStart_toEndOf="@+id/addLunch"
+        app:layout_constraintTop_toTopOf="@+id/addLunch" />
+
+    <Button
+        android:id="@+id/addBreakfast"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:shadowColor="#2D2F31"
+        android:text="breakfast"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addMeal" />
+
+    <TextView
+        android:id="@+id/dailyCalorieCount"
+        android:layout_width="382dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginEnd="79dp"
+        android:text="0/2000 Calories"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/foodText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#B946ABD8"
-            android:fadingEdge="horizontal|vertical">
+    <TextView
+        android:id="@+id/addMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="174dp"
+        android:layout_marginEnd="171dp"
+        android:text="ADD MEAL"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyCalorieCount" />
 
-            <TextView
-                android:id="@+id/nutrition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Nutrition"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF"
-                android:textSize="36sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/view2"
-        android:layout_width="450dp"
-        android:layout_height="150dp"
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="222dp"
         android:layout_marginTop="50dp"
-        app:cardCornerRadius="13dp"
+        android:layout_marginEnd="222dp"
+        android:text="DATE"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view1">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#B946ABD8" >
-
-            <TextView
-                android:id="@+id/physicalActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Exercise"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF"
-                android:textSize="36sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/view3"
-        android:layout_width="450dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="50dp"
-        app:cardCornerRadius="13dp"
+    <EditText
+        android:id="@+id/foodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="mango"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/searchFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2">
+        app:layout_constraintTop_toBottomOf="@+id/foodName" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#B946ABD8" >
-
-            <TextView
-                android:id="@+id/glocuseLevels"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Glucose Levels"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF"
-                android:textSize="36sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/view4"
-        android:layout_width="450dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="50dp"
-        app:cardCornerRadius="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Food Name"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#B946ABD8" >
-
-            <TextView
-                android:id="@+id/sleep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Sleep"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#FFFFFF"
-                android:textSize="36sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintTop_toBottomOf="@+id/addMorningSnack" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
