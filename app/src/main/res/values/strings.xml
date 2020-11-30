@@ -13,4 +13,5 @@
 
     // api key for food data central
     <string name="api_key">kwAPxa4YJSYCvhOz6OZdJbOgZX1lse2FtpldfgG1</string>
+    <string name="todo">TODO</string>
 </resources>

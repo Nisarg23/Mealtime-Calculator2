@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="W"
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/Tu"
         app:layout_constraintStart_toEndOf="@+id/Tu"
         app:layout_constraintTop_toTopOf="@+id/Tu" />
@@ -22,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:text="M"
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/alarm_time"
         app:layout_constraintStart_toEndOf="@+id/alarm_AM_or_PM"
         app:layout_constraintTop_toTopOf="@+id/alarm_time" />
@@ -33,7 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="T"
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/M"
         app:layout_constraintStart_toEndOf="@+id/M"
         app:layout_constraintTop_toTopOf="@+id/M" />
@@ -44,21 +50,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="T"
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/W"
         app:layout_constraintStart_toEndOf="@+id/W"
         app:layout_constraintTop_toTopOf="@+id/W" />
-
-    <TextView
-        android:id="@+id/F"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="F"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/Th"
-        app:layout_constraintStart_toEndOf="@+id/Th"
-        app:layout_constraintTop_toTopOf="@+id/Th" />
 
     <TextView
         android:id="@+id/Sa"
@@ -66,10 +63,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="S"
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/F"
         app:layout_constraintStart_toEndOf="@+id/F"
         app:layout_constraintTop_toTopOf="@+id/F" />
+
+    <TextView
+        android:id="@+id/F"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="F"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/Th"
+        app:layout_constraintStart_toEndOf="@+id/Th"
+        app:layout_constraintTop_toTopOf="@+id/Th" />
 
     <TextView
         android:id="@+id/Su"
@@ -77,7 +89,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="S"
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/Sa"
         app:layout_constraintStart_toEndOf="@+id/Sa"
         app:layout_constraintTop_toTopOf="@+id/Sa" />
@@ -88,7 +102,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="a.m."
+        android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/alarm_time"
         app:layout_constraintStart_toEndOf="@+id/alarm_time"
         app:layout_constraintTop_toTopOf="@+id/alarm_time">
@@ -103,7 +119,9 @@
         android:layout_marginBottom="60dp"
         android:gravity="center"
         android:text="9:20"
+        android:textColor="#000000"
         android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alarm_name" />
@@ -112,14 +130,15 @@
         android:id="@+id/alarm_on_or_off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="56dp"
         android:layout_marginBottom="78dp"
         android:checked="true"
         android:enabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/alarm_name"

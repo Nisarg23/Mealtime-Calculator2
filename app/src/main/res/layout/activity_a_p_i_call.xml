@@ -25,7 +25,6 @@
         android:layout_marginStart="74dp"
         android:layout_marginTop="60dp"
         android:text="Food Name"
-        android:textColor="@android:color/background_dark"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
