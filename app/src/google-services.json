@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "192011100652",
+    "firebase_url": "https://mealtime-insulin-calculator.firebaseio.com",
+    "project_id": "mealtime-insulin-calculator",
+    "storage_bucket": "mealtime-insulin-calculator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192011100652:android:e5624e993abbc058ac20c9",
+        "android_client_info": {
+          "package_name": "com.nphq.mealtimecalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192011100652-c51779clpm25k7fi12uels600s9pc1r3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXTKi4O30nHgLP93PBIV4DWWuOh2c0zME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192011100652-c51779clpm25k7fi12uels600s9pc1r3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
