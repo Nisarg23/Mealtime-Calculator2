@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.google.android.material.navigation.NavigationView;
+import com.nphq.mealtimecalculator.ui.ProfileFragment;
 import com.nphq.mealtimecalculator.ui.notification.NotificationFragment;
 import com.nphq.mealtimecalculator.ui.reminder.ReminderFragment;
 import com.nphq.mealtimecalculator.ui.sleep.SleepFragment;
@@ -75,11 +76,13 @@ public class MainActivity extends AppCompatActivity implements
         fragmentManager.beginTransaction().add(R.id.content_main,new ContactFragment(),"contact").commitNow();
         fragmentManager.beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
         fragmentManager.beginTransaction().add(R.id.content_main,new NotificationFragment(),"notification").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new ProfileFragment(),"profile").commitNow();
 
         Fragment f2 = fragmentManager.findFragmentByTag("stats");
         Fragment f3 = fragmentManager.findFragmentByTag("contact");
         Fragment f4 = fragmentManager.findFragmentByTag("reminder");
         Fragment f5 = fragmentManager.findFragmentByTag("notification");
+        Fragment f6 = fragmentManager.findFragmentByTag("profile");
 
 
 
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements
         fragmentManager.beginTransaction().hide(f3).commitNow();
         fragmentManager.beginTransaction().hide(f4).commitNow();
         fragmentManager.beginTransaction().hide(f5).commitNow();
+        fragmentManager.beginTransaction().hide(f6).commitNow();
 
         getSupportActionBar().setTitle("Home Page");
 
@@ -97,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements
         fragment_selected.put("contact",false);
         fragment_selected.put("reminder",false);
         fragment_selected.put("notification",false);
+        fragment_selected.put("profile",false);
 
         Boolean open_noticiation = getIntent().getBooleanExtra("goToNotification",false);
         // System.out.print("Go To Notification "+ open_noticiation);
@@ -134,6 +139,10 @@ public class MainActivity extends AppCompatActivity implements
                 tag = "notification";
                 getSupportActionBar().setTitle("Notification Page");
                 break;
+            case R.id.nav_profile:
+                tag = "profile";
+                getSupportActionBar().setTitle("Profile Page");
+                break;
 
         }
 
@@ -156,6 +165,10 @@ public class MainActivity extends AppCompatActivity implements
         else if (fragment_selected.get("notification").equals(true)){
             fragment_selected.replace("notification",false);
             fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("notification")).commitNow();
+        }
+        else if (fragment_selected.get("profile").equals(true)){
+            fragment_selected.replace("profile",false);
+            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("profile")).commitNow();
         }
 
 

@@ -4,15 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.nphq.mealtimecalculator.R;
-
 import org.json.simple.parser.ParseException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,7 +21,6 @@ public class NutritionList extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Context c = this;
-
     ArrayList<String> nutrition_name = new ArrayList<String>();
     ArrayList<String> nutrition_amount = new ArrayList<String>();
     ArrayList<String> nutrition_unit = new ArrayList<String>();
@@ -46,8 +41,6 @@ public class NutritionList extends AppCompatActivity {
             public void run() {
                 URL urlForGetRequest = null;
                 StringBuffer response = new StringBuffer();
-
-
 
 
                 try {
@@ -87,19 +80,21 @@ public class NutritionList extends AppCompatActivity {
                     org.json.simple.JSONObject jsonobject = (org.json.simple.JSONObject) arr.get(i);
 
                     org.json.simple.JSONArray arr2 =(org.json.simple.JSONArray) jsonobject.get("foodNutrients");
-                    System.out.println(jsonobject.get("fdcId"));
+
                     for (int j = 0; j < arr2.size(); j++) {
                         org.json.simple.JSONObject nutrients = (org.json.simple.JSONObject) arr2.get(j);
                         nutrition_name.add(nutrients.get("name").toString());
                         nutrition_amount.add(nutrients.get("amount").toString());
-                        nutrition_unit.add(nutrients.get("unitName").toString());
 
-
+                        if (nutrients.get("unitName").toString().equals("KCAL")){
+                            nutrition_unit.add("CAL");
+                        }
+                        else{
+                            nutrition_unit.add(nutrients.get("unitName").toString());
+                        }
 
                     }
                 }
-
-
             }
         }).start();
 
@@ -108,7 +103,6 @@ public class NutritionList extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
         recyclerView = findViewById(R.id.nutrition_recyclerview);
         NutritionAdapter nutritionAdapter = new NutritionAdapter(c,nutrition_name,nutrition_amount,nutrition_unit);
