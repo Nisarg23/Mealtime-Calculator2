@@ -1,6 +1,5 @@
 package com.nphq.mealtimecalculator.ui.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +11,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nphq.mealtimecalculator.R;
-import com.nphq.mealtimecalculator.homeActivities.API_call;
-import com.nphq.mealtimecalculator.homeActivities.ExerciseActivity;
-import com.nphq.mealtimecalculator.homeActivities.FoodActivity;
-import com.nphq.mealtimecalculator.homeActivities.GlucoseLevelsActivity;
+import com.nphq.mealtimecalculator.homeActivities.NutritionAdapter;
 import com.nphq.mealtimecalculator.homeActivities.NutritionList;
-import com.nphq.mealtimecalculator.homeActivities.SleepActivity;
+import com.nphq.mealtimecalculator.ui.home.FoodListAdapter;
 
-import org.w3c.dom.Text;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -39,6 +32,15 @@ public class HomeFragment extends Fragment {
     public static String food="NULL";
 
     public static EditText foodEdit;
+
+    RecyclerView recyclerView;
+
+    public static ArrayList<String> meal = new ArrayList<>();
+    public static ArrayList<String> name= new ArrayList<>();
+    public static ArrayList<String> portion= new ArrayList<>();
+    public static ArrayList<String> insulin= new ArrayList<>();
+
+    FoodListAdapter foodListAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -104,16 +106,32 @@ public class HomeFragment extends Fragment {
                 if (portionSize.getText().toString().isEmpty() ||foodEdit.getText().toString().isEmpty() ){
                     Toast.makeText(getActivity(), "Please enter food name and portion size", Toast.LENGTH_SHORT).show();
                 }
+                else if (button_active[0] == false && button_active[1] == false && button_active[2] == false){
+                    Toast.makeText(getActivity(), "Please choose type of meal", Toast.LENGTH_SHORT).show();
+                }
                 else {
 
 
                     food = foodEdit.getEditableText().toString();
                     try {
                         final double multiplier = Double.parseDouble(portionSize.getText().toString());
-                        startActivity(new Intent(getActivity(), NutritionList.class)
-                                .putExtra("food", food).putExtra("multiplyBy", multiplier));
                         foodEdit.setText("");
                         portionSize.setText("");
+
+                        String s = "";
+                        if (button_active[0] == true){
+                            s = "BREAKFAST";
+                        }
+                        else if (button_active[1] == true){
+                            s = "LUNCH";
+                        }
+                        else if (button_active[2] == true){
+                            s = "DINNER";
+                        }
+
+                        Intent next_screen = new Intent(getActivity(), NutritionList.class)
+                                .putExtra("food", food).putExtra("multiplyBy", multiplier).putExtra("meal",s);
+                        startActivityForResult(next_screen,1000);
                     }
                     catch (NumberFormatException e){
                         Toast.makeText(getActivity(), "Please enter a number for portion size", Toast.LENGTH_SHORT).show();
@@ -125,7 +143,23 @@ public class HomeFragment extends Fragment {
         });
 
 
+        recyclerView = root.findViewById(R.id.foodListRecyclerView);
+        foodListAdapter = new FoodListAdapter(getActivity(),meal,name,portion,insulin);
+        recyclerView.setAdapter(foodListAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
 
         return root;
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        boolean found = data.getBooleanExtra("found",false);
+        if (!found){
+            Toast.makeText(getActivity(),"Food not found in the database",Toast.LENGTH_LONG).show();
+        }
+        foodListAdapter.notifyDataSetChanged();
     }
 }
