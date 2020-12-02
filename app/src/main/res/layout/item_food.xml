@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="70dp">
 
     <TextView
         android:id="@+id/type_of_meal"
-        android:layout_width="100dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="0dp"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,10 +22,10 @@
         android:id="@+id/food_name"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/type_of_meal"
         app:layout_constraintStart_toEndOf="@+id/type_of_meal"
         app:layout_constraintTop_toTopOf="@+id/type_of_meal"
@@ -33,12 +33,12 @@
 
     <TextView
         android:id="@+id/food_portion"
-        android:layout_width="140dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="15dp"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/food_name"
         app:layout_constraintStart_toEndOf="@+id/food_name"
         app:layout_constraintTop_toTopOf="@+id/food_name" />
@@ -50,7 +50,7 @@
         android:layout_marginStart="30dp"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/food_portion"
         app:layout_constraintStart_toEndOf="@+id/food_portion"
         app:layout_constraintTop_toTopOf="@+id/food_portion" />

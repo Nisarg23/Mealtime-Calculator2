@@ -9,13 +9,14 @@
 
     <Button
         android:id="@+id/foodList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_width="147dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="76dp"
         android:background="@drawable/rounder_corners_green"
         android:text="Food List"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintHorizontal_bias="0.708"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/portion_size" />
 
@@ -23,11 +24,11 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="84dp"
-        android:text="Portion Size"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="Number of Portions"
         android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -35,18 +36,20 @@
         android:id="@+id/portion_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="124dp"
         android:ems="10"
         android:hint="0.5"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/textView16"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView16" />
+        app:layout_constraintTop_toTopOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.473" />
 
     <Button
         android:id="@+id/addEveningSnack"
         android:layout_width="161dp"
         android:layout_height="100dp"
+        android:layout_marginStart="9dp"
         android:background="@drawable/rounded_corners_blue"
         android:shadowColor="@android:color/holo_blue_light"
         android:text="evening snack"
@@ -57,7 +60,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/addAfternoonSnack"
         app:layout_constraintStart_toEndOf="@+id/addAfternoonSnack"
-        app:layout_constraintTop_toTopOf="@+id/addAfternoonSnack" />
+        app:layout_constraintTop_toTopOf="@+id/addAfternoonSnack"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/addLunch"
@@ -97,6 +101,7 @@
         android:id="@+id/addAfternoonSnack"
         android:layout_width="161dp"
         android:layout_height="100dp"
+        android:layout_marginStart="9dp"
         android:background="@drawable/rounded_corners_blue"
         android:shadowColor="@android:color/holo_blue_light"
         android:text="afternoon snack"
@@ -107,13 +112,14 @@
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="@+id/addMorningSnack"
         app:layout_constraintStart_toEndOf="@+id/addMorningSnack"
-        app:layout_constraintTop_toTopOf="@+id/addMorningSnack" />
+        app:layout_constraintTop_toTopOf="@+id/addMorningSnack"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/addDinner"
         android:layout_width="161dp"
         android:layout_height="100dp"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="9dp"
         android:background="@drawable/rounded_corners_blue"
         android:shadowColor="@android:color/holo_blue_light"
         android:text="dinner"
@@ -131,7 +137,7 @@
         android:layout_width="161dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/rounded_corners_blue"
         android:shadowColor="#2D2F31"
         android:text="breakfast"
@@ -148,12 +154,14 @@
         android:layout_width="382dp"
         android:layout_height="64dp"
         android:layout_marginStart="79dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="79dp"
         android:text="0/2000 Calories"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date" />
 
@@ -162,6 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="174dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="171dp"
         android:text="ADD MEAL"
         android:textAlignment="center"
@@ -169,16 +178,16 @@
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dailyCalorieCount" />
+
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="222dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="222dp"
+        android:layout_marginTop="96dp"
         android:text="DATE"
         android:textColor="@android:color/black"
         android:textSize="40sp"
@@ -186,28 +195,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
         android:id="@+id/foodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="124dp"
         android:ems="10"
         android:hint="mango"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/searchFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="125dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="76dp"
         android:background="@drawable/rounder_corners_green"
         android:text="search"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/portion_size" />
 
@@ -215,13 +225,42 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
         android:text="Food Name"
         android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addMorningSnack" />
 
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:clickable="false"
+        android:text="**Note: 1 portion = 100g"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="477dp"
+        android:layout_height="107dp"
+        android:text="** Make sure to add ALL condiments, seasonings, cooking oils, etc **"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
