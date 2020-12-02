@@ -20,22 +20,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.nphq.mealtimecalculator.ui.ProfileFragment;
 import com.nphq.mealtimecalculator.ui.notification.NotificationFragment;
 import com.nphq.mealtimecalculator.ui.reminder.ReminderFragment;
-import com.nphq.mealtimecalculator.ui.sleep.SleepFragment;
+import com.nphq.mealtimecalculator.ui.stats.StatsFragment;
 import com.nphq.mealtimecalculator.ui.home.HomeFragment;
 import com.nphq.mealtimecalculator.ui.contact.ContactFragment;
 
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.simple.parser.ParseException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 
@@ -72,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements
         fragmentManager = getSupportFragmentManager();
 
         fragmentManager.beginTransaction().add(R.id.content_main,new HomeFragment(),"home").commitNow();
-        fragmentManager.beginTransaction().add(R.id.content_main,new SleepFragment(),"stats").commitNow();
+        fragmentManager.beginTransaction().add(R.id.content_main,new StatsFragment(),"stats").commitNow();
         fragmentManager.beginTransaction().add(R.id.content_main,new ContactFragment(),"contact").commitNow();
         fragmentManager.beginTransaction().add(R.id.content_main,new ReminderFragment(),"reminder").commitNow();
         fragmentManager.beginTransaction().add(R.id.content_main,new NotificationFragment(),"notification").commitNow();

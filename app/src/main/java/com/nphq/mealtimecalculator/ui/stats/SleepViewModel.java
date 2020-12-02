@@ -1,4 +1,4 @@
-package com.nphq.mealtimecalculator.ui.sleep;
+package com.nphq.mealtimecalculator.ui.stats;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

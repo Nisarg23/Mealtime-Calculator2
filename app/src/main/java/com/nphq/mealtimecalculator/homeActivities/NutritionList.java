@@ -38,6 +38,7 @@ public class NutritionList extends AppCompatActivity {
 
     double carbs = 0;
     double fiber = 0;
+    double cal = 0;
 
     Intent previousScreen;
     @Override
@@ -116,6 +117,8 @@ public class NutritionList extends AppCompatActivity {
 
                             if (nutrients.get("unitName").toString().equals("KCAL")) {
                                 nutrition_unit.add("CAL");
+                                cal = Double.parseDouble(nutrients.get("amount").toString());
+
                             } else {
                                 nutrition_unit.add(nutrients.get("unitName").toString());
                             }
@@ -195,7 +198,7 @@ public class NutritionList extends AppCompatActivity {
                 else if (meal.equals("DINNER")){
                     HomeFragment.DinnerInsulin = HomeFragment.DinnerInsulin + insulin;
                 }
-
+                HomeFragment.calories = HomeFragment.calories + cal;
 
                 finish();
 

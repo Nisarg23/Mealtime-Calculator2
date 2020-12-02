@@ -39,9 +39,10 @@ public class HomeFragment extends Fragment {
     public static double breakFastInsulin;
     public static double LunchInsulin;
     public static double DinnerInsulin;
+    public static double calories;
 
 
-
+    TextView calorieText;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +53,9 @@ public class HomeFragment extends Fragment {
         breakFastInsulin = 0;
         LunchInsulin = 0;
         DinnerInsulin = 0;
+        calories = 0;
+
+        calorieText = root.findViewById(R.id.dailyCalorieCount);
 
         TextView date = root.findViewById(R.id.date);
         Date c = Calendar.getInstance().getTime();
@@ -167,6 +171,7 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getActivity(),"Food not found in the database",Toast.LENGTH_LONG).show();
         }
         System.out.println("Insulin"+breakFastInsulin);
-
+        int c = (int) calories;
+        calorieText.setText(Integer.toString(c)+"/2000");
     }
 }
