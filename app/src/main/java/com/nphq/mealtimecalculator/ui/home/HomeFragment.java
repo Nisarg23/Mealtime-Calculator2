@@ -13,13 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.nphq.mealtimecalculator.FoodListActivity;
 import com.nphq.mealtimecalculator.R;
-import com.nphq.mealtimecalculator.homeActivities.NutritionAdapter;
 import com.nphq.mealtimecalculator.homeActivities.NutritionList;
-import com.nphq.mealtimecalculator.ui.home.FoodListAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,14 +30,17 @@ public class HomeFragment extends Fragment {
 
     public static EditText foodEdit;
 
-    RecyclerView recyclerView;
 
     public static ArrayList<String> meal = new ArrayList<>();
     public static ArrayList<String> name= new ArrayList<>();
     public static ArrayList<String> portion= new ArrayList<>();
     public static ArrayList<String> insulin= new ArrayList<>();
 
-    FoodListAdapter foodListAdapter;
+    public static double breakFastInsulin;
+    public static double LunchInsulin;
+    public static double DinnerInsulin;
+
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -49,6 +49,9 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        breakFastInsulin = 0;
+        LunchInsulin = 0;
+        DinnerInsulin = 0;
 
         TextView date = root.findViewById(R.id.date);
         Date c = Calendar.getInstance().getTime();
@@ -143,10 +146,13 @@ public class HomeFragment extends Fragment {
         });
 
 
-        recyclerView = root.findViewById(R.id.foodListRecyclerView);
-        foodListAdapter = new FoodListAdapter(getActivity(),meal,name,portion,insulin);
-        recyclerView.setAdapter(foodListAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Button foodList = root.findViewById(R.id.foodList);
+        foodList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), FoodListActivity.class));
+            }
+        });
 
 
 
@@ -160,6 +166,7 @@ public class HomeFragment extends Fragment {
         if (!found){
             Toast.makeText(getActivity(),"Food not found in the database",Toast.LENGTH_LONG).show();
         }
-        foodListAdapter.notifyDataSetChanged();
+        System.out.println("Insulin"+breakFastInsulin);
+
     }
 }

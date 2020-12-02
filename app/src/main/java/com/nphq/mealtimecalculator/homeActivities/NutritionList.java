@@ -36,6 +36,9 @@ public class NutritionList extends AppCompatActivity {
     double multiplier;
     boolean finish;
 
+    double carbs = 0;
+    double fiber = 0;
+
     Intent previousScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class NutritionList extends AppCompatActivity {
         Intent intent = getIntent();
         food = intent.getExtras().getString("food","null");
         meal = intent.getExtras().getString("meal","null");
+        System.out.println("meal is "+meal);
         multiplier = intent.getExtras().getDouble("multiplyBy",1);
 
          previousScreen = new Intent(getApplicationContext(), MainActivity.class);
@@ -97,11 +101,18 @@ public class NutritionList extends AppCompatActivity {
 
                         for (int j = 0; j < arr2.size(); j++) {
                             org.json.simple.JSONObject nutrients = (org.json.simple.JSONObject) arr2.get(j);
+
+                            if (nutrients.get("name").toString().equals("Carbohydrate, by difference")){
+                                carbs = Double.parseDouble(nutrients.get("amount").toString())*multiplier;
+                            }
+                            else if (nutrients.get("name").toString().equals("Fiber, total dietary")){
+                                fiber = Double.parseDouble(nutrients.get("amount").toString())*multiplier;
+                            }
                             nutrition_name.add(nutrients.get("name").toString());
 
                             double amount = Double.parseDouble(nutrients.get("amount").toString())*multiplier;
-                            String.format("%.2f", amount);
-                            nutrition_amount.add(Double.toString(amount));
+                            String string_amount = String.format("%.2f", amount);
+                            nutrition_amount.add(string_amount);
 
                             if (nutrients.get("unitName").toString().equals("KCAL")) {
                                 nutrition_unit.add("CAL");
@@ -147,10 +158,45 @@ public class NutritionList extends AppCompatActivity {
                 HomeFragment.name.add(food);
                 HomeFragment.portion.add(Double.toString(multiplier));
 
+                double time_factor = 1;
+                if (meal.equals("LUNCH")){
+                    time_factor = 1.05;
+                }
+                else if (meal.equals("DINNER")){
+                    time_factor = 1.2;
+                }
+
                 // calulate insulin
-                HomeFragment.insulin.add("10");
+                // insulin = CCD + HBSC
+                // CCD = (carbs - fiber) / ((500/daily inslin dosage)*18)
+                // HBSC = (blood sugar - target sugar) / (1800 / daily inslin dosage )
+                // daily insulin dosage = wight in lbs / 4
+
+                double CCD, HBSC, insulin, customize_correction,DID;
+                DID = 50;
+                CCD = (carbs - fiber) / ((500/50)*18);
+                HBSC = (170 - 120) / (1800 / 50);
+                customize_correction = 1;
+                insulin = (HBSC + CCD)*customize_correction*time_factor;
+
+
+                String string_insulin = String.format("%.2f", insulin);
+                HomeFragment.insulin.add(string_insulin);
                 previousScreen.putExtra("found", true);
                 setResult(1000, previousScreen);
+
+                if (meal.equals("BREAKFAST")){
+                    HomeFragment.breakFastInsulin = HomeFragment.breakFastInsulin + insulin;
+                    System.out.println("expected"+HomeFragment.breakFastInsulin + insulin);
+                }
+                else if (meal.equals("LUNCH")){
+                    HomeFragment.LunchInsulin = HomeFragment.LunchInsulin + insulin;
+                }
+                else if (meal.equals("DINNER")){
+                    HomeFragment.DinnerInsulin = HomeFragment.DinnerInsulin + insulin;
+                }
+
+
                 finish();
 
             }

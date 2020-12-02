@@ -7,6 +7,18 @@
     android:background="#FFFFFF"
     tools:context=".ui.home.HomeFragment">
 
+    <Button
+        android:id="@+id/foodList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/rounder_corners_green"
+        android:text="Food List"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/portion_size" />
+
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
@@ -210,13 +222,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addMorningSnack" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/foodListRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchFood" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
