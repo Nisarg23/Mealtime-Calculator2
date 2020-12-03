@@ -12,6 +12,7 @@
         android:layout_marginStart="10dp"
         android:text="W"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_Tu"
         app:layout_constraintStart_toEndOf="@+id/notification_Tu"
         app:layout_constraintTop_toTopOf="@+id/notification_Tu" />
@@ -23,6 +24,7 @@
         android:layout_marginStart="80dp"
         android:text="M"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_time"
         app:layout_constraintStart_toEndOf="@+id/notification_AM_or_PM"
         app:layout_constraintTop_toTopOf="@+id/notification_time" />
@@ -34,6 +36,7 @@
         android:layout_marginStart="10dp"
         android:text="T"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_M"
         app:layout_constraintStart_toEndOf="@+id/notification_M"
         app:layout_constraintTop_toTopOf="@+id/notification_M" />
@@ -45,6 +48,7 @@
         android:layout_marginStart="10dp"
         android:text="T"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_W"
         app:layout_constraintStart_toEndOf="@+id/notification_W"
         app:layout_constraintTop_toTopOf="@+id/notification_W" />
@@ -56,6 +60,7 @@
         android:layout_marginStart="10dp"
         android:text="F"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_Th"
         app:layout_constraintStart_toEndOf="@+id/notification_Th"
         app:layout_constraintTop_toTopOf="@+id/notification_Th" />
@@ -67,6 +72,7 @@
         android:layout_marginStart="10dp"
         android:text="S"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_F"
         app:layout_constraintStart_toEndOf="@+id/notification_F"
         app:layout_constraintTop_toTopOf="@+id/notification_F" />
@@ -78,6 +84,7 @@
         android:layout_marginStart="10dp"
         android:text="S"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_Sa"
         app:layout_constraintStart_toEndOf="@+id/notification_Sa"
         app:layout_constraintTop_toTopOf="@+id/notification_Sa" />
@@ -89,6 +96,7 @@
         android:gravity="center"
         android:text="a.m."
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/notification_time"
         app:layout_constraintStart_toEndOf="@+id/notification_time"
         app:layout_constraintTop_toTopOf="@+id/notification_time">
@@ -104,6 +112,7 @@
         android:gravity="center"
         android:text="9:20"
         android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notification_name" />
@@ -112,14 +121,16 @@
         android:id="@+id/notification_on_or_off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="78dp"
         android:checked="true"
         android:enabled="true"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/notification_name"
