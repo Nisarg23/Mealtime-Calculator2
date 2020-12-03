@@ -72,14 +72,14 @@ public class NotificationFragment extends Fragment {
             public void onClick(View view) {
                 // build notification
 
-//               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-//                    sendNoticationAPI26();
-//
-//               }
-//               else{
-//                   sendNotication();
-//
-//               }
+               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                    sendNoticationAPI26();
+
+               }
+               else{
+                   sendNotication();
+
+               }
 
                 startActivity(new Intent(getActivity(),NotificationActivity.class));
 
@@ -104,8 +104,8 @@ public class NotificationFragment extends Fragment {
     }
 
     private void sendNotication() {
-        String title = "Notify App";
-        String message = "Message for ";
+        String title = "Mealtime Calculator App API Deprecated";
+        String message = "Remember to take your Insulin! API Deprecated ";
 
 
         Intent intent = new Intent(getActivity(),MainActivity.class);
@@ -129,8 +129,8 @@ public class NotificationFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void sendNoticationAPI26() {
-        String title = "Notify App API 26";
-        String message = "Message for API 26";
+        String title = "Mealtime Calculator App";
+        String message = "Remember to take your Insulin! ";
 
         NotificationHelper helper;
         Notification.Builder builder;

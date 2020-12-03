@@ -1,11 +1,16 @@
 package com.nphq.mealtimecalculator.homeActivities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -157,50 +162,84 @@ public class NutritionList extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeFragment.meal.add(meal);
-                HomeFragment.name.add(food);
-                HomeFragment.portion.add(Double.toString(multiplier));
 
-                double time_factor = 1;
-                if (meal.equals("LUNCH")){
-                    time_factor = 1.05;
-                }
-                else if (meal.equals("DINNER")){
-                    time_factor = 1.2;
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(NutritionList.this);
+                builder.setTitle("Please enter your current blood sugar level (mmol/L)");
 
-                // calulate insulin
-                // insulin = CCD + HBSC
-                // CCD = (carbs - fiber) / ((500/daily inslin dosage)*18)
-                // HBSC = (blood sugar - target sugar) / (1800 / daily inslin dosage )
-                // daily insulin dosage = wight in lbs / 4
+// Set up the input
+                final EditText input = new EditText(NutritionList.this);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                builder.setView(input);
 
-                double CCD, HBSC, insulin, customize_correction,DID;
-                DID = 50;
-                CCD = (carbs - fiber) / ((500/50)*18);
-                HBSC = (170 - 120) / (1800 / 50);
-                customize_correction = 1;
-                insulin = (HBSC + CCD)*customize_correction*time_factor;
+// Set up the buttons
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        boolean con = true;
+//                        while (con){
+//                            try {
+//                                Double.parseDouble(input.getText().toString());
+//                                con = false;
+//                            } catch(NumberFormatException e){
+//                                Toast.makeText(NutritionList.this,"Please input a number",Toast.LENGTH_LONG).show();
+//                            }
+//                        }
+                        HomeFragment.meal.add(meal);
+                        HomeFragment.name.add(food);
+                        HomeFragment.portion.add(Double.toString(multiplier));
+
+                        double time_factor = 1;
+                        if (meal.equals("LUNCH")){
+                            time_factor = 1.05;
+                        }
+                        else if (meal.equals("DINNER")){
+                            time_factor = 1.2;
+                        }
+
+                        // calulate insulin
+                        // insulin = CCD + HBSC
+                        // CCD = (carbs - fiber) / ((500/daily inslin dosage)*18)
+                        // HBSC = (blood sugar - target sugar) / (1800 / daily inslin dosage )
+                        // daily insulin dosage = wight in lbs / 4
+
+                        double CCD, HBSC, insulin, customize_correction,DID;
+                        DID = 50;
+                        CCD = (carbs - fiber) / ((500/50)*18);
+                        HBSC = (170 - 120) / (1800 / 50);
+                        customize_correction = 1;
+                        insulin = (HBSC + CCD)*customize_correction*time_factor;
 
 
-                String string_insulin = String.format("%.2f", insulin);
-                HomeFragment.insulin.add(string_insulin);
-                previousScreen.putExtra("found", true);
-                setResult(1000, previousScreen);
+                        String string_insulin = String.format("%.2f", insulin);
+                        HomeFragment.insulin.add(string_insulin);
+                        previousScreen.putExtra("found", true);
+                        setResult(1000, previousScreen);
 
-                if (meal.equals("BREAKFAST")){
-                    HomeFragment.breakFastInsulin = HomeFragment.breakFastInsulin + insulin;
-                    System.out.println("expected"+HomeFragment.breakFastInsulin + insulin);
-                }
-                else if (meal.equals("LUNCH")){
-                    HomeFragment.LunchInsulin = HomeFragment.LunchInsulin + insulin;
-                }
-                else if (meal.equals("DINNER")){
-                    HomeFragment.DinnerInsulin = HomeFragment.DinnerInsulin + insulin;
-                }
-                HomeFragment.calories = HomeFragment.calories + cal;
+                        if (meal.equals("BREAKFAST")){
+                            HomeFragment.breakFastInsulin = HomeFragment.breakFastInsulin + insulin;
+                            System.out.println("expected"+HomeFragment.breakFastInsulin + insulin);
+                        }
+                        else if (meal.equals("LUNCH")){
+                            HomeFragment.LunchInsulin = HomeFragment.LunchInsulin + insulin;
+                        }
+                        else if (meal.equals("DINNER")){
+                            HomeFragment.DinnerInsulin = HomeFragment.DinnerInsulin + insulin;
+                        }
+                        HomeFragment.calories = HomeFragment.calories + cal;
 
-                finish();
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+
 
             }
         });
