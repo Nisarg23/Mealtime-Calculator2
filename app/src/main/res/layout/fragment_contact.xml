@@ -15,12 +15,9 @@
         android:layout_width="58dp"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:background="#f000
-"
         android:gravity="center_vertical"
         android:text="To:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
     <EditText
@@ -39,11 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:background="#f000"
         android:gravity="center_vertical"
         android:text="Subject:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
     <EditText
@@ -57,11 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:background="#f000"
         android:gravity="center_vertical"
         android:text="Message:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
     <EditText

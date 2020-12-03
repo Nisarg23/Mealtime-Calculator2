@@ -145,9 +145,9 @@ public class StatsFragment extends Fragment {
 
         Date d = new Date();
 
-        List<String> datesList = new ArrayList<>(Arrays.asList("2020-11-01","2020-11-02","2020-11-03","2020-11-04","2020-11-05","2020-11-06"));
-        List<Double> values1 = new ArrayList<Double>(Arrays.asList(140.0,140.0,140.0,140.0,140.0,140.0));
-        List<Double> values2 = new ArrayList<Double>(Arrays.asList(150.0,200.0,180.0,120.0,110.0,100.0));
+        List<String> datesList = new ArrayList<>(Arrays.asList("2020-11-01","2020-11-02","2020-11-03","2020-11-04","2020-11-05","2020-11-06","2020-11-07"));
+        List<Double> values1 = new ArrayList<Double>(Arrays.asList(140.0,140.0,140.0,140.0,140.0,140.0,140.0));
+        List<Double> values2 = new ArrayList<Double>(Arrays.asList(150.0,200.0,180.0,120.0,110.0,100.0,140.0));
         xAxis.setValueFormatter(new ClaimsXAxisValueFormatter(datesList));
         renderData(datesList,values1,values2);
 
@@ -194,9 +194,9 @@ public class StatsFragment extends Fragment {
         XAxis.XAxisPosition position = XAxis.XAxisPosition.BOTTOM;
         xAxis.setPosition(position);
         xAxis.enableGridDashedLine(2f, 7f, 0f);
-        xAxis.setAxisMaximum(5f);
+        xAxis.setAxisMaximum(7f);
         xAxis.setAxisMinimum(0f);
-        xAxis.setLabelCount(dates.size(), true);
+        xAxis.setLabelCount(8, true);
         xAxis.setGranularityEnabled(true);
         xAxis.setGranularity(7f);
         xAxis.setLabelRotationAngle(315f);
